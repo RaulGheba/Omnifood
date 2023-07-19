@@ -1,28 +1,37 @@
 /* rem and em do NOT depend on html font-size in media queries! Instead, 1rem = 1em = 16px */
 
 /**************************/
-/* BELOW 1344px (Smaller desktops)*/
+/* BELOW 1344px (Smaller desktops) */
 /**************************/
 
 @media (max-width: 84em) {
   .hero {
     max-width: 120rem;
   }
+
   .heading-primary {
     font-size: 4.4rem;
+    padding-right: 2.4rem;
   }
 
   .gallery {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .delivered-text{
+    white-space: nowrap;
+  }
+
+
 }
 
 /**************************/
-/* BELOW 1200px (Landscape tablets)*/
+/* BELOW 1200px (Landscape Tablets) */
 /**************************/
 
 @media (max-width: 75em) {
   html {
+    /* 9px / 16px  */
     font-size: 56.25%;
   }
 
@@ -34,6 +43,15 @@
   .heading-secondary {
     font-size: 3.6rem;
   }
+
+  .heading-primary{
+    padding-right: 3.0rem;
+  }
+
+  .hero-text-box{
+    
+  }
+
 
   .heading-tertiary {
     font-size: 2.4rem;
@@ -57,12 +75,12 @@
 }
 
 /**************************/
-/* BELOW 944px (Tablets)*/
+/* BELOW 944px (Tablets) */
 /**************************/
 
 @media (max-width: 59em) {
   html {
-    /* 8px / 16 = 0.5 = 50% */
+    /* 8px / 16px = 0.5 = 50% */
     font-size: 50%;
   }
 
@@ -72,13 +90,9 @@
     gap: 6.4rem;
   }
 
-  .hero-text-box {
-    text-align: center;
-  }
-
+  .hero-text-box,
   .hero-img-box {
     text-align: center;
-    /* Since images are inline elements, they are affected by text-align */
   }
 
   .hero-img {
@@ -102,42 +116,92 @@
     padding: 2.4rem 3.2rem 3.2rem 3.2rem;
   }
 
-  /* .gallery {
-   justify-items: center;
-  }
-
-  .testimonial{
-    text-align: center;
-  }
-
-  .gallery-item {
-    width: 50%;
-  }
-
   .section-testimonials {
     grid-template-columns: 1fr;
-    justify-items: center;
-  }
-  ^^^ THIS WOULD BE MY APPROACH ^^^
-  */
-
- 
-
-  .section-testimonials {
-    grid-template-columns: 1fr;
-    justify-items: center;
   }
 
   .gallery {
     grid-template-columns: repeat(6, 1fr);
   }
 
-  .cta{
+  .cta {
+    /* 3/5 = 60% + 2/5 = 40% */
     grid-template-columns: 3fr 2fr;
   }
 
-  .cta-img-box{
-    background-position: center;
+  .cta-form {
+    grid-template-columns: 1fr;
+  }
+
+  .btn--form {
+    margin-top: 1.2rem;
+  }
+
+  /************ MOBILE NAVIGATION ************/
+  .btn-mobile-nav {
+    display: block;
+  }
+
+  .main-nav {
+    background-color: rgba(255, 255, 255,0.97);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh; /* MAKE THE NAV COVER THE WHOLE SCREEN */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s;
+
+    /* Hide navigation */
+    /* Allows NO transitions:  */
+    /* display: none; */
+
+
+    /*1. Hide it visually  */
+
+    opacity: 0;
+
+    /*2. Make it unaccessible to mouse and keyboard */
+
+    pointer-events: none;
+
+    /*3. Hide it from screen readers */
+
+    visibility: hidden;
+  }
+
+
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+.nav-open .icon-mobile-nav[name="close-outline"] { /* only when nav-open  exists, "x" is shown */
+  display: block;
+}
+
+.nav-open .icon-mobile-nav[name="menu-outline"] { 
+  display: none;
+}
+
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 4.8rem;
+    
+  }
+  
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 3rem;
   }
 
 }
+
+
+
+
+

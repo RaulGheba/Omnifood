@@ -7,12 +7,15 @@
   justify-content: space-between;
   align-items: center;
   background-color: #fdf2e9;
-  height: 9.6rem; /* a fixed height makes it easier to make it sticky */
+
+  /* Because we want header to be sticky later */
+  height: 9.6rem;
   padding: 0 4.8rem;
+  position: relative;
 }
 
-.logo-o {
-  height: 3.2rem;
+.logo {
+  height: 2.2rem;
 }
 
 /**************************/
@@ -22,18 +25,19 @@
 .main-nav-list {
   list-style: none;
   display: flex;
-  gap: 4.8rem;
   align-items: center;
+  gap: 4.8rem;
 }
 
 .main-nav-link:link,
 .main-nav-link:visited {
+  display: inline-block;
   text-decoration: none;
   color: #333;
   font-weight: 500;
   font-size: 1.8rem;
-  transition: all 0.3s; /* always put transition on the original state! */
-  display: inline-block; /* ALWAYS ADD display: inline-block for links!! */
+  transition: all 0.3s;
+  text-align: center;
 }
 
 .main-nav-link:hover,
@@ -43,7 +47,6 @@
 
 .main-nav-link.nav-cta:link,
 .main-nav-link.nav-cta:visited {
-  /* only targets elements that have both classes */
   padding: 1.2rem 2.4rem;
   border-radius: 9px;
   color: #fff;
@@ -55,35 +58,50 @@
   background-color: #cf711f;
 }
 
+
+/************ MOBILE ************/
+
+.btn-mobile-nav{
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: none;
+}
+
+.icon-mobile-nav{
+  height: 4.8rem;
+  width: 4.8rem;
+  color: #333;
+}
+
+
+/*
+    <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+    <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+*/
+
+.icon-mobile-nav[name="close-outline"] {
+  display: none;
+}
+
+
 /**************************/
 /* HERO SECTION */
 /**************************/
 
 .section-hero {
-  /* this will span across the WHOLE viewport */
   background-color: #fdf2e9;
-  padding: 4.8rem 0 9.6rem 0; /* this is basically the space between items */
+  padding: 4.8rem 0 9.6rem 0;
 }
 
 .hero {
+  max-width: 130rem;
+  margin: 0 auto;
   padding: 0 3.2rem;
-  /* ALWAYS USE max-width ON BIG/MAIN CONTAINERS! */
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 9.6rem; /* for consistency we add the same space here */
-  max-width: 1300px; /* first child of section-hero, and the parent of all the other elements in the hero. having 1300px of section-hero, it will always span a certain width */
-  margin: 0 auto; /* remember the old trick, this centers the container in the viewport */
+  gap: 9.6rem;
   align-items: center;
-  background-color: #fdf2e9;
-}
-
-.heading-primary {
-  font-size: 5.2rem;
-  font-weight: 700;
-  line-height: 1.05;
-  color: #333;
-  letter-spacing: -0.5px;
-  margin-bottom: 3.2rem;
 }
 
 .hero-description {
@@ -92,90 +110,15 @@
   margin-bottom: 4.8rem;
 }
 
-.btn,
-.btn:link,
-.btn:visited {
-  display: inline-block; /* buttons are inline elements */
-  text-decoration: none;
-  font-size: 2rem;
-  font-weight: 600;
-  padding: 1.6rem 3.2rem;
-  border-radius: 9px;
-
-  /* Only necessary for .btn*/
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.3s;
-}
-
-.btn--full:link,
-.btn--full:visited {
-  background-color: #e67e22;
-  color: #fff;
-}
-
-.btn--outline:link,
-.btn--outline:visited {
-  background-color: #fff;
-  color: #555;
-}
-
-.btn--full:hover,
-.btn--full:active {
-  background-color: #cf711f;
-}
-
-.btn--outline:hover,
-.btn--outline:active {
-  background-color: #fdf2e9;
-
-  /* Trick to add border inside */
-  box-shadow: inset 0 0 0 3px #fff;
-}
-
-.btn--form {
-  background-color: #45260a;
-  color: #fdf2e9;
-  align-self: end;
-  padding: 1.2rem;
-}
-
-.btn--form:hover {
-  background-color: #fff;
-  color: #555;
-}
-
 .hero-img {
-  width: 100%; /* fills the parent element, so the hero-img-box div, with the image */
-}
-
-.link:link,
-.link:visited {
-  display: inline-block;
-  color: #e67e22;
-  text-decoration: none;
-  border-bottom: 1px solid currentColor; /* currentColor uses the text color */
-  padding-bottom: 2px;
-  transition: all 0.3s;
-}
-
-.link:hover,
-.link:active {
-  color: #cf711f;
-  border-bottom: 1px solid transparent;
-}
-
-.margin-right-sm {
-  /*  REUSABLE HELPER CLASS FOR margin-right */
-  margin-right: 1.6rem !important;
+  width: 100%;
 }
 
 .delivered-meals {
   display: flex;
-  margin-top: 8rem;
   align-items: center;
   gap: 1.6rem;
+  margin-top: 8rem;
 }
 
 .delivered-imgs {
@@ -205,7 +148,36 @@
 }
 
 /**************************/
-/* HOW-IT-WORKS SECTION */
+/* FEATURED IN SECTION */
+/**************************/
+
+.section-featured {
+  padding: 4.8rem 0 3.2rem 0;
+}
+
+.heading-featured-in {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 2.4rem;
+  color: #888;
+}
+
+.logos {
+  display: flex;
+  justify-content: space-around;
+}
+
+.logos img {
+  height: 3.2rem;
+  filter: brightness(0);
+  opacity: 50%;
+}
+
+/**************************/
+/* HOW IT WORKS SECTION */
 /**************************/
 
 .section-how {
@@ -221,75 +193,49 @@
 
 .step-description {
   font-size: 1.8rem;
-  line-height: 1.8rem;
-}
-
-.step-img {
-  width: 35%; /* occupy half the available parent */
-}
-
-.step-img-box::before,
-.step-img-box::after {
-  content: ""; /* to make it actually appear on the page */
-  border-radius: 50%;
-  display: block;
-  border-radius: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-}
-
-.step-img-box::before {
-  width: 60%;
-  padding-bottom: 60%; /* HACK to set height in accordance to parent element's width (so, 60% of parent's width) */
-  background-color: #fdf2e9;
-  z-index: -1;
-}
-
-.step-img-box::after {
-  width: 50%;
-  padding-bottom: 50%;
-  background-color: #fae5d3;
-  z-index: -1;
+  line-height: 1.8;
 }
 
 .step-img-box {
   position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/**************************/
-/* FEATURED IN */
-/**************************/
-
-.section-featured {
-  padding: 4.8rem 0 3.2rem 0;
+.step-img-box::before,
+.step-img-box::after {
+  content: "";
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.heading-featured-in {
-  text-align: center;
-  margin-bottom: 2.4rem;
-  margin-top: 2.4rem;
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  letter-spacing: 0.75px;
-  font-weight: 500;
-  color: #888;
+.step-img-box::before {
+  width: 60%;
+  /* height: 60%; */
+
+  /* 60% of parent's width */
+  padding-bottom: 60%;
+
+  background-color: #fdf2e9;
+  z-index: -2;
 }
 
-.logos {
-  display: flex;
-  max-width: 1300px;
-  justify-content: space-between;
+.step-img-box::after {
+  width: 45%;
+  padding-bottom: 45%;
+  background-color: #fae5d3;
+  z-index: -1;
 }
 
-.logos img {
-  height: 3.2rem;
-  filter: brightness(0);
-  opacity: 50%;
+.step-img {
+  width: 35%;
+  /* z-index: 10; */
 }
 
 /**************************/
@@ -302,7 +248,7 @@
 
 .meal {
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
-  border-radius: 12px;
+  border-radius: 11px;
   overflow: hidden;
   transition: all 0.4s;
 }
@@ -327,8 +273,6 @@
   padding: 0.4rem 0.8rem;
   font-size: 1.2rem;
   text-transform: uppercase;
-
-  background-color: #51cf66;
   color: #333;
   border-radius: 100px;
   font-weight: 600;
@@ -337,11 +281,9 @@
 .tag--vegetarian {
   background-color: #51cf66;
 }
-
 .tag--vegan {
   background-color: #94d82d;
 }
-
 .tag--paleo {
   background-color: #ffd43b;
 }
@@ -354,9 +296,9 @@
 }
 
 .meal-attributes {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  list-style: none;
   gap: 2rem;
 }
 
@@ -399,10 +341,9 @@
 
 .testimonials {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   row-gap: 4.8rem;
   column-gap: 8rem;
-  align-items: center;
 }
 
 .testimonial-img {
@@ -430,11 +371,11 @@
 }
 
 .gallery-item {
-  overflow: hidden; /* this stops the images from overflowing their container when hovered upon with the animation */
+  overflow: hidden;
 }
 
 .gallery-item img {
-  display: block; /* this fixes the small space between multiple images, which can sometimes appear.  */
+  display: block;
   width: 100%;
   transition: all 0.4s;
 }
@@ -444,7 +385,7 @@
 }
 
 /**************************/
-/* PRICING SECTION */
+/* MEALS SECTION */
 /**************************/
 
 .section-pricing {
@@ -453,7 +394,8 @@
 
 .pricing-plan {
   border-radius: 11px;
-  width: 75%; /* it wil now occupy only a certain amount of the available width (parent) */
+
+  width: 75%;
 }
 
 .pricing-plan--starter {
@@ -466,22 +408,21 @@
   background-color: #fdf2e9;
   padding: 4.8rem;
   position: relative;
-  overflow: hidden; /* hide the corners of the "best value" ribbon */
+  overflow: hidden;
 }
 
 .pricing-plan--complete::after {
   content: "Best value";
   position: absolute;
-  top: 28px;
-  right: -32px;
+  top: 6%;
+  right: -18%;
+
   text-transform: uppercase;
   font-size: 1.4rem;
-
   font-weight: 700;
   color: #333;
-  background-color: red;
-  color: white;
-  padding: 0.8rem 3.2rem;
+  background-color: #ffd43b;
+  padding: 0.8rem 8rem;
   transform: rotate(45deg);
 }
 
@@ -493,7 +434,7 @@
 .plan-name {
   color: #cf711f;
   font-weight: 600;
-  font-size: 1.6rem;
+  font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.75;
   margin-bottom: 3.2rem;
@@ -518,7 +459,7 @@
   color: #6f6f6f;
 }
 
-.plan-sign-up {
+.plan-sing-up {
   text-align: center;
   margin-top: 4.8rem;
 }
@@ -534,10 +475,9 @@
   height: 3.2rem;
   width: 3.2rem;
   background-color: #fdf2e9;
-  border-radius: 50%;
-  padding: 1.6rem;
-
   margin-bottom: 3.2rem;
+  padding: 1.6rem;
+  border-radius: 50%;
 }
 
 .feature-title {
@@ -557,47 +497,51 @@
 /**************************/
 
 .section-cta {
-  padding: 9.6rem 0;
+  /* top / right / bottom / left */
+  /* padding: 9.6rem 0 12.8rem 0; */
+
+  /* top / horizontal / left */
+  padding: 4.8rem 0 12.8rem;
 }
 
 .cta {
   display: grid;
   /* 2/3 = 66.6% + 1/3 = 33.3% */
-  grid-template-columns: 2fr 1fr; /* I want FIRST item to be 2 thirds, the last one 1 third */
-  background-color: #e67e22;
+  grid-template-columns: 2fr 1fr;
+  /* background-color: #e67e22; */
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
   border-radius: 11px;
 
   background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
-  /* temp */
-  height: 50rem;
   overflow: hidden;
 }
 
 .cta-text-box {
-  color: #45260a;
   padding: 4.8rem 6.4rem 6.4rem 6.4rem;
+  color: #45260a;
 }
 
 .cta .heading-secondary {
+  /* color: #45260a; */
   color: inherit;
   margin-bottom: 3.2rem;
 }
 
 .cta-text {
   font-size: 1.8rem;
-  line-height: 1.8rem;
+  line-height: 1.8;
   margin-bottom: 4.8rem;
 }
 
 .cta-img-box {
   background-image: linear-gradient(
       to right bottom,
-      rgba(235, 151, 78, 0.301),
-      rgba(230, 125, 34, 0.301)
+      rgba(235, 151, 78, 0.35),
+      rgba(230, 125, 34, 0.35)
     ),
     url("../img/eating.jpg");
   background-size: cover;
+  background-position: center;
 }
 
 .cta-form {
@@ -608,21 +552,23 @@
 }
 
 .cta-form label {
-  display: block; /* this puts the input and label each on their own line */
+  display: block;
   font-size: 1.6rem;
   font-weight: 500;
   margin-bottom: 1.2rem;
 }
+
 .cta-form input,
 .cta-form select {
-  width: 100%; /* makes them occupy their entire parent */
+  width: 100%;
   padding: 1.2rem;
-  font-family: inherit; /* it INHERITS the font-family from whatever parent element is relevant in this case */
+  font-size: 1.8rem;
+  font-family: inherit;
   color: inherit;
   border: none;
   background-color: #fdf2e9;
   border-radius: 9px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .cta-form input::placeholder {
@@ -630,17 +576,26 @@
 }
 
 .cta *:focus {
-  /* remove the borders and add beautiful ones when selected with TAB */
   outline: none;
   box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
 }
 
 /**************************/
-/* FOOTER SECTION */
+/* FOOTER */
 /**************************/
 
 .footer {
-  padding: 9.6rem 0;
+  padding: 12.8rem 0;
+  border-top: 1px solid #eee;
+}
+
+.grid--footer {
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+}
+
+.logo-col {
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-logo {
@@ -666,15 +621,10 @@
   margin-top: auto;
 }
 
-.logo-col {
-  display: flex;
-  flex-direction: column;
-}
-
 .footer-heading {
   font-size: 1.8rem;
   font-weight: 500;
-  margin-bottom: 3.2rem;
+  margin-bottom: 4rem;
 }
 
 .contacts {
@@ -688,8 +638,8 @@
 }
 
 .footer-nav {
-  display: flex;
   list-style: none;
+  display: flex;
   flex-direction: column;
   gap: 2.4rem;
 }
