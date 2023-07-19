@@ -1,0 +1,48 @@
+AS WE DECREASE THE VIEWPORT AT 1200 WE NOTICE THAT THE TEXT IS HUGE IN SOME PLACES, AS WELL AS THE SPACING. WE MUST MAKE THIS SMALLER.
+
+WE CAN NOW USE TO OUR ADVANTAGE THE FACT THAT WE USED RESPONSIVE UNITS FROM THE VERY START.
+
+SINCE ALL ELEMENTS ARE DESIGNED WITH rem, WE CAN PULL UP THE html ELEMENT AND MODIFY THE FONT-SIZE! 
+
+I WANT TO SET IT TO 9px. 
+9/16 = 56.25%
+
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .grid {
+    column-gap: 4.8rem;
+    row-gap: 6.4rem;
+  }
+  .heading-secondary {
+    font-size: 3.6rem;
+  }
+
+  .heading-tertiary {
+    font-size: 2.4rem;
+  }
+
+  .header {
+    padding: 0 3.2rem;
+  }
+
+  .main-nav-list {
+    gap: 3.2rem;
+  }
+
+  .hero {
+    gap: 4.8rem;
+  }
+
+  .testimonials-container {
+    padding: 9.6rem 3.2rem;
+  }
+}
+
+
+
+
+
+

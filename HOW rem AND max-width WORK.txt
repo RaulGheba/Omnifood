@@ -1,0 +1,62 @@
+
+1. max-width:
+
+<div class="test">
+      TEST
+    </div>
+
+.test{
+  width: 1000px;
+  background-color: red;
+  padding: 100px;
+}
+
+RIGHT NOW THE ELEMENT STAYS THE SAME WIDTH NO MATTER WHAT WE DO. WE EVEN GET SCROLL BARS FROM LEFT-RIGHT,
+BECAUSE OF ITS HUGE WIDTH (WHEN WE DECREASE THE VIEWPORT).
+
+WHEN THERE IS NO MORE ADDITIONAL SPACE TO FIT THE 1000px, THE ELEMENT SHOULD HAVE THE WIDTH OF THE PARENT
+CONTAINER
+
+
+.test{
+  background-color: red;
+  padding: 100px;
+  max-width: 1000px; <====
+}
+
+=> IT ADAPTS TO THE VIEWPORT WIDTH.
+
+=> IF THE CONTAINER WIDTH IS LARGER THAN THE SPECIFIED max-width, THE WIDTH OF THE ELEMENT IS EQUAL TO THE
+VALUE SPECIFIED BY max-width. IF IT IS LESS, THE WIDTH OF THE ELEMENT IS 100% OF THE CONTAINER WIDTH.
+
+
+==========================================================================
+
+2. rem:const openModal = function (e) {
+  e.preventDefault();
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+
+rem is the root element font size. 
+THE ROOT IS THE html ELEMENT, THE PARENT OF ALL THE OTHERS.
+IF WE DONT DEFINE ANY FONT SIZE ON THIS html ELEMENT, 1rem = 16px.
+
+
+.test{
+  background-color: red;
+  padding: 100px;
+  max-width: 50rem;
+
+  /* 1 rem = 16px ->  */
+
+}
+
+WE CAN CHANGE THE FONT-SIZE OF THE html, AND THE rem WILL BE THAT ACROSS THE WHOLE PAGE.
+
+
+html{
+  font-size: 62.5%;
+}
+
+SO NOW, 1rem = 10px;

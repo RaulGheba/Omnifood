@@ -1,0 +1,209 @@
+NOW WE NEED TO HIDE THE CONTAINER IN A CORRECT WAY, AND ALSO COME UP WITH A MECHANISM WE CAN LATER USE 
+IN JS TO SHOW THIS NAVIGATION
+
+WHAT WE CAN DO IS ALREADY PREPARE EVERYTHING AND DO THAT MANUALLY
+
+==================
+
+1. WE NEED A WAY OF HIDING THIS NAVIGATION
+
+  .main-nav{
+    background-color: rgba(255, 255, 255,0.97);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh; /* MAKE THE NAV COVER THE WHOLE SCREEN */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Hide navigation */
+    /* Allows NO transitions!  */
+    /* display: none; */
+
+	/* Allows transitions!  */
+    opacity: 0; <=====
+  }
+
+
+====================================================
+
+2. WE NOW ADDED THE CLASS "NAV-OPEN" TO THE header.
+
+    <header class="header nav-open"> <======
+      <a href="#">
+        <img class="logo" src="/07-Omnifood-Desktop/img/omnifood-logo.png" alt="">
+      </a>
+      
+      <nav class="main-nav">
+        <ul class="main-nav-list"> 
+          <li>
+            <a href="#" class="main-nav-link">How it works</a>
+          </li>
+          <li>
+            <a href="#" class="main-nav-link">Meals</a>
+          </li>
+          <li>
+            <a href="#" class="main-nav-link">Testimonials</a>
+          </li>
+          <li>
+            <a href="#" class="main-nav-link">Pricing</a>
+          </li>
+          <li>
+            <a href="#" class="main-nav-link nav-cta">Try for Free</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="btn-mobile-nav">
+        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+      </button>
+    </header>
+
+
+THIS IS THE CLASS THAT WILL BE ADDED AND REMOVED USING JAVASCRIPT.
+WHENEVER THE NAVIGATION IS OPEN, nav-open WILL BE PRESENT ON THE HEADER ELEMENT.
+
+=======================================================================
+
+3. LETS NOW PRETEND LIKE THE NAV IS OPEN, SO THEN WE CAN APPLY STYLES BASED ON THAT.
+
+nav-open IS A PARENT OF main-nav, SO WE CAN USE THAT IN OUR CSS IKE THIS:
+
+  /************ MOBILE NAVIGATION ************/
+  .btn-mobile-nav{
+    display: block;
+  }
+
+  .main-nav{
+    background-color: rgba(255, 255, 255,0.97);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh; /* MAKE THE NAV COVER THE WHOLE SCREEN */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Hide navigation */
+    /* Allows NO transitions!  */
+    /* display: none; */
+
+    opacity: 0;
+  }
+
+
+  .nav-open .main-nav{ <=================
+    opacity: 1;
+  }
+
+  .main-nav-list{
+    flex-direction: column;
+    gap: 4.8rem;
+    
+  }
+  
+  .main-nav-link:link,
+  .main-nav-link:visited{
+    font-size: 3rem;
+  }
+
+
+https://prnt.sc/joU3GVKCtEPq
+
+=> WHEN nav-open EXISTS,THE main-nav STYLE CAN BE APPLIED
+
+.main-nav STYLE CANNOT BE APPLIED IF nav-open IS NOT ON THE PAGE.
+
+=======================================================
+
+BUT THIS IS ACTUALLY NOT ENOUGH TO HIDE THE NAVIGATION.
+
+TO HIDE THE NAVIGATION PROPERLY, WITHOUT display: none, WE NEED TO DO A COUPLE OF STEPS.
+
+
+1. Hide it visually.
+
+    opacity: 0;
+
+
+2. Make it unaccessible to mouse and keyboard.
+
+	pointer-events: none;
+
+
+3. visibility: hidden;
+
+THE NEW CODE:
+
+/************ MOBILE NAVIGATION ************/
+  .btn-mobile-nav {
+    display: block;
+  }
+
+  .main-nav {
+    background-color: rgba(255, 255, 255,0.97);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh; /* MAKE THE NAV COVER THE WHOLE SCREEN */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+
+    /* Hide navigation */
+    /* Allows NO transitions!  */
+    /* display: none; */
+
+
+    /*1. Hide it visually  */
+
+    opacity: 0;
+
+    /*2. Make it unaccessible to mouse and keyboard. */
+
+    pointer-events: none;
+
+    /*3. Hide it from screen readers*/
+
+    visibility: hidden;
+  }
+
+
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 4.8rem;
+    
+  }
+  
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 3rem;
+  }
+
+}
+
+
+
+===========================================
+
+
+
+
+
+
+
+
+
+

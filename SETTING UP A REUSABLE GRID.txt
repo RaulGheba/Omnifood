@@ -1,0 +1,49 @@
+.container{ /* we will use this centered container across our project, we make a REUSABLE template here */
+max-width: 120rem;
+padding: 0 3.2rem;
+margin: 0 auto;
+}
+
+.grid{ /* WE ARE SETTING UP A REUSABLE GRID. */ 
+  display: grid;
+  gap: 9.6rem;
+  grid-template-columns: repeat(2, 1fr); /* we want 1fr twice */
+}
+
+
+.grid--2-cols{
+  grid-template-columns: repeat(2, 1fr); /* we want 1fr twice */
+} 
+
+.grid--3-cols{
+  grid-template-columns: repeat(3, 1fr); /* we want 1fr twice */
+} 
+
+
+.grid--4-cols{
+  grid-template-columns: repeat(4,1fr);
+}
+
+
+
+
+	<section class="section-how ">
+      <div class="container grid grid--2-cols">
+      <div>Test 1</div>
+      <div>Test 2</div>
+      <div>Test 3</div>
+      <div>Test 4</div>
+      </div>
+    </section>
+
+
+RESULT:
+
+https://prnt.sc/EBsmL9-jPp9R
+
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+FIRSTLY WE GET RID OF THE nav-open CLASS BECAUSE BY DEFAULT, WE DON'T WANT IT
+
+WE WILL ADD THE NEXT BREAKPOINT AT 700px:
+
+WE WANT TO TRANSFORM THE GRIDS THAT HAVE 3 OR 4 COLUMNS TO GRIDS WITH JUST 2 COLUMNS.
+
+/**************************/
+/* BELOW 700px (Smaller Tablets) */
+/**************************/
+
+@media (max-width: 43.75em){
+  .grid--3-cols, .grid--4-cols{
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .diets{
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .heading-secondary{
+    margin-bottom: 4.8rem;
+  }
+
+  .pricing-plan{
+    width: 100%;
+  }
+
+}
+
+==================================================
+
+NOW WE WILL FIX THE FOOTER BECAUSE IT SPANS TOO MUCH. WE WILL REARRANGE THE COLUMNS:
+
+BY DEFAULT IT IS A 5 COLUMN GRID. WE WILL MAKE IT SPAN 3 COLS.
+
+WE WILL MAKE A 6 COLUMN GRID. WE WILL HAVE EACH nav-col SPAN ACROSS 2 COLUMNS (THERE ARE 3 nav-col), 
+AND THE OTHER TWO PARTS SPAN ACROSS 3 COLS.
+
+
+@media (max-width: 43.75em){
+  .grid--3-cols, .grid--4-cols{
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .diets{
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .heading-secondary{
+    margin-bottom: 4.8rem;
+  }
+
+  .pricing-plan{
+    width: 100%;
+  }
+
+  .grid--footer{
+    grid-template-columns: repeat(6,1fr);
+  }
+
+  .nav-col{
+    grid-row: 1;
+    grid-column: span 2;
+  }
+
+
+  .logo-col, .address-col{
+    grid-column: span 3;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
