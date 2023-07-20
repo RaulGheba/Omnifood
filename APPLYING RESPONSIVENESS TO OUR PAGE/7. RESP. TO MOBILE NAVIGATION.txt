@@ -1,0 +1,167 @@
+WE WILL NOW TRANSFORM OUR SIMPLE NAVIGATION BAR INTO A MOBILE NAVIGATION. 
+
+WHEN WE REACH THE 944px BREAKPOINT, WE WANT THE NAV MENU TO DISAPPEAR, AND A MENU BUTTON TO SHOW UP ON THE RIGHT SIDE
+
+1. OUR BUTTON NEEDS TO BE IN THE HTML FROM THE VERY BEGINNING. WE WILL PUT IT IN THE NAVIGATION OFC.
+
+
+ <body>
+    <header class="header">
+      <a href="#">
+        <img class="logo" src="/07-Omnifood-Desktop/img/omnifood-logo.png" alt="">
+      </a>
+      
+      <nav class="main-nav">
+        <ul class="main-nav-list"> 
+          <li>
+            <a href="#" class="main-nav-link">How it works</a>
+          </li>
+          <li>
+            <a href="#" class="main-nav-link">Meals</a>
+          </li>
+          <li>
+            <a href="#" class="main-nav-link">Testimonials</a>
+          </li>
+          <li>
+            <a href="#" class="main-nav-link">Pricing</a>
+          </li>
+          <li>
+            <a href="#" class="main-nav-link nav-cta">Try for Free</a>
+          </li>
+        </ul>
+      </nav>
+
+
+      <button class="btn-mobile-nav">
+        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+      </button>
+    </header>
+	
+	
+WE ARE ADDING THESE 2 ICONS BECAUSE THE DEFAULT ICON WILL BE THE menu-outline, AND WHEN THE USER HITS IT, 
+THE MOBILE NAV SHOWS, THEN WE HIDE THE ICON AND DISPLAY THE close ICON.
+
+DEFAULT ASPECT WITH NO STYLING:
+
+https://prnt.sc/lfioxPYhsHFE
+
+========================================================================
+
+css:
+
+.btn-mobile-nav{
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: none;
+}
+
+
+.icon-mobile-nav{
+  height: 4.8rem;
+  width: 4.8rem;
+  color: #333;
+}
+
+
+THIS LOOKS BETTER ALREADY BUT THEY ARE BOTH VISIBLE:
+https://prnt.sc/8Z61gIctnfkL
+
+
+BY DEFAULT, WE WANT ONE OF THEM TO BE HIDDEN.	
+
+SO WE WANT TO SELECT THE "x" AND HIDE IT
+
+
+SO WE COULD ADD ANOTHER CLASS IN THE HTML, AND STYLE THEM.
+
+==============================================================
+
+BUT NOW WE WILL SEE ANOTHER SELECTOR:
+
+HERE IS THE HTML FOR THE BUTTONS, FOR REFERENCE:
+
+
+		<ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+        <ion-icon class="icon-mobile-nav close" name="close-outline"></ion-icon>
+
+
+WE GO INTO style.css, NOT into queries.css:
+
+WE WILL SELECT THE ELEMENT BASED ON THE name ATTRIBUTE.
+
+
+.icon-mobile-nav[name="close-outline"] {
+  display: none;
+}
+
+=========================================
+
+NOW WHEN WE HIT THAT SPECIFIC MEDIA QUERY, IT MUST SHOW
+
+/**************************/
+/* BELOW 944px (Tablets) */
+/**************************/
+
+/************ MOBILE NAVIGATION ************/
+  .btn-mobile-nav{
+    display: block;
+  }
+
+=========================================================
+
+NOW WE HAVE TO MAKE IT AN ACTUAL MOBILE NAVIGATION
+
+THIS NAVIGATION WILL HAVE TO WORK FOR THIS WIDTH (944px), AND ALL THE OTHER WIDTHS THAT COME LATER.
+
+WHAT I WANT TO DO NOW IS TO BASICALLY OVERLAY THE NAVIGATION OVER THE ENTIRE SCREEN ON THE HERO.
+EACH OF THE NAV ITEMS WILL BE DISPLAYED VERTICALLY OVER THE HERO.
+
+https://prnt.sc/Wnp_5Hg-Xfvo
+
+THE WAY WE WILL DO THIS IS TO REMOVE THE ELEMENT USING CSS WITH ABSOLUTE POSITIONING.
+
+BUT WE WILL NOT MAKE THE .header ELEMENT position: relative, AS WE COULD BE TEMPTED.
+
+WE WANT TO POSITION THE main-nav RELATIVE TO THE VIEWPORT, NOT THE .header.
+
+
+.btn-mobile-nav{
+    display: block;
+  }
+
+  .main-nav{
+    background-color: rgba(255, 255, 255,0.97);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh; /* MAKE THE NAV COVER THE WHOLE SCREEN */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-nav-list{
+    flex-direction: column;
+    gap: 4.8rem;
+    
+  }
+  
+  .main-nav-link:link,
+  .main-nav-link:visited{
+    font-size: 3rem;
+  }
+
+
+
+
+
+
+
+
+
+
+
+

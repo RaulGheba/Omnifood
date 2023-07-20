@@ -1,0 +1,34 @@
+@media (max-width:1200px){
+  .section-hero{
+    background-color: orangered;
+  }
+}
+
+@media (max-width:600px){
+  .section-hero{
+    border: 20px dashed blue;
+  }
+}
+
+WHEN THE HERO IS LESS THAN 1200px, IT GETS THE BG COLOR.
+WHEN LESS THAN 600, IT GETS THE BORDER
+
+=================================================
+
+
+NOW LETS TRY TO ADD A CONFLICTING CSS DECLARATION
+
+@media (max-width:1200px){
+  .section-hero{
+    background-color: orangered;
+  }
+}
+
+@media (max-width:600px){
+  .section-hero{
+    background-color: blue;
+  }
+}
+
+
+SINCE THE 600px ONE APPEARS L A T E R IN THE CODE, IT IS APPLIED. B E F O R E THE 600, IT BECOMES ORANGE, BECAUSE THE 600 IS NOT BEING APPLIED

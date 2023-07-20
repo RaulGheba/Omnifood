@@ -1,0 +1,55 @@
+FIRST WE CREATE A NEW FILE FOR THE MEDIA QUERIES
+
+WE WILL USE THE TWO METHODS WE DISCUSSED: LOOK AT WHERE OUR DESIGN BREAKS, 
+
+WE MUST PAY ATTENTION TO THE max-width WE SET ON OUR CONTAINERS
+
+1.FIRST WE WILL MAKE THE HERO WIDE AS THE REST OF THE PAGE AT 1300PX AND 1366PX (HERO IS 1300, REST OF THE PAGE IS 1200).
+
+
+/* rem and em do NOT depend on html font-size in media queries! Instead, 1rem = 1em = 16px */
+
+1.WE WANT THE VALUE TO BE 1344px, BUT WE CALCULATED 1344/16 BECAUSE OF WHAT WE SAID ABOVE. THIS GAVE US 84, SO WE USE 84em.
+
+
+@media(max-width:84em){
+  .hero{
+    max-width: 120rem;
+  }
+}
+
+
+2. BUT WITH THIS WE CREATED A NEW PROBLEM, AND THAT IS THE HEADING NOW CHANGED ITS LINES (IT AUTOMATICALLY OCCUPIES 4 LINES INSTEAD OF 3, SO IT JUMPS AROUND).
+
+@media(max-width:84em){
+  .hero{
+    max-width: 120rem;
+  }
+  .heading-primary{
+    font-size: 4.4rem; <====== NOW IT WORKS
+  }
+}
+
+
+3. NOW THE GRID OF IMAGES WAY BELOW JUMPS AROUND, SO WE SIMPLY MAKE IT OCCUPY LESS (IT OCCUPIED 3 COLUMNS BEFORE)
+
+@media(max-width:84em){
+  .hero{
+    max-width: 120rem;
+  }
+  .heading-primary{
+    font-size: 4.4rem;
+  }
+
+ 
+  .gallery{ <=====
+    grid-template-columns: repeat(2,1fr);
+  }
+
+}
+
+
+
+
+
+
